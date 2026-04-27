@@ -79,9 +79,17 @@
 
     // ИСПРАВЛЕНО: Функция теперь открывает реальный прокси-диплинк
     function setupProxy() {
-        // Это пример прокси. Позже заменим на твой личный
-        const proxyUrl = "https://t.me";
-        tg.openTelegramLink(proxyUrl);
+        // Используем протокол tg:// вместо https://
+        const proxyUrl = "tg://proxy?server=exp.proxy.digitalshield.io&port=443&secret=ee00000000000000000000000000000000676f6f676c652e636f6d";
+        
+        // Попробуем два метода для надежности:
+        try {
+            tg.openTelegramLink(proxyUrl);
+        } catch (e) {
+            window.location.href = proxyUrl;
+        }
+    }
+
     }
     </script>
 </body>
