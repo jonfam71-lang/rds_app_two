@@ -63,16 +63,25 @@
         
         <p style="font-size: 14px;">Если Telegram работает медленно, используй наш резервный мост:</p>
         <!-- Ссылка на MTProto прокси. Данные прокси можно будет менять -->
-        <a href="https://t.me" class="btn-proxy">⚡ УСКОРИТЬ TELEGRAM</a>
+        <button onclick="setupProxy()" class="btn-proxy">⚡ УСКОРИТЬ TELEGRAM</button
     </div>
 
     <script>
-        let tg = window.Telegram.WebApp;
-        tg.expand();
-        const user = tg.initDataUnsafe.user;
-        if (user) {
-            document.getElementById('user-greeting').innerText = `Привет, ${user.first_name}!`;
-        }
-    </script>
+    let tg = window.Telegram.WebApp;
+    tg.expand();
+
+    const user = tg.initDataUnsafe.user;
+    if (user) {
+        document.getElementById('user-greeting').innerText = `Привет, ${user.first_name}!`;
+    }
+
+    // Функция для открытия прокси напрямую через API Telegram
+    function setupProxy() {
+        const proxyUrl = "https://t.me";
+        tg.openTelegramLink(proxyUrl);
+    }
+
+
+</script>
 </body>
 </html>
