@@ -67,29 +67,24 @@
     </div>
 
     <script>
-    // Инициализация Mini App
-    let tg = window.Telegram.WebApp;
+    // 1. Инициализация Mini App
+    const tg = window.Telegram.WebApp;
+    tg.ready();
     tg.expand();
 
-    // Приветствие пользователя
+    // 2. Приветствие пользователя
     const user = tg.initDataUnsafe.user;
     if (user) {
         document.getElementById('user-greeting').innerText = `Привет, ${user.first_name}!`;
     }
 
-    // ИСПРАВЛЕНО: Функция теперь открывает реальный прокси-диплинк
+    // 3. ФУНКЦИЯ-СПАСАТЕЛЬ (Без лишних скобок)
     function setupProxy() {
-        // Используем протокол tg:// вместо https://
-        const proxyUrl = "tg://proxy?server=exp.proxy.digitalshield.io&port=443&secret=ee00000000000000000000000000000000676f6f676c652e636f6d";
+        // Пробуем специальный формат ссылки, который ТГ понимает как внутренний
+        const proxyUrl = "https://t.me";
         
-        // Попробуем два метода для надежности:
-        try {
-            tg.openTelegramLink(proxyUrl);
-        } catch (e) {
-            window.location.href = proxyUrl;
-        }
-    }
-
+        // Метод openLink с try_instantview заставляет ТГ пытаться открыть это внутри приложения
+        tg.openLink(proxyUrl, {try_instantview: true});
     }
     </script>
 </body>
