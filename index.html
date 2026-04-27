@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+    let tg = window.Telegram.WebApp;
+    tg.expand(); // Развернуть на весь экран
+    tg.MainButton.setText("ПОЛУЧИТЬ КЛЮЧ RDS").show();
+
+    // Когда юзер нажимает на главную кнопку Mini App
+    tg.MainButton.onClick(function() {
+        // Отправляем данные обратно в бот
+        tg.sendData("request_free_key"); 
+        tg.close();
+    });
+</script>
+    <style>
+        body {
+            background-color: #0f172a; /* Темный фон RDS */
+            color: white;
+            font-family: sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .shield-logo {
+            width: 100px;
+            height: 100px;
+            border: 3px solid #38bdf8;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 24px;
+            box-shadow: 0 0 20px #38bdf8;
+            margin-bottom: 20px;
+        }
+        .btn {
+            background: #38bdf8;
+            color: #0f172a;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 80%;
+            font-size: 16px;
+        }
+        .status {
+            margin-top: 15px;
+            color: #94a3b8;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="shield-logo">RDS</div>
+    <h2>Russian Digital Shield</h2>
+    <button class="btn" onclick="Telegram.WebApp.close()">ПОЛУЧИТЬ ЗАЩИТУ</button>
+    <div class="status">Статус системы: Активна (Tor)</div>
+
+    <script>
+        let tg = window.Telegram.WebApp;
+        tg.expand(); // Развернуть на весь экран
+    </script>
+</body>
+</html>
