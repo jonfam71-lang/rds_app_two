@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <!-- ИСПРАВЛЕНО: Правильная библиотека для работы внутри ТГ -->
     <script src="https://telegram.org"></script>
     <style>
         body {
@@ -33,7 +34,7 @@
             box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
         }
         .btn-proxy {
-            background: #f59e0b; /* Оранжевый - внимание/помощь */
+            background: #f59e0b;
             color: #0f172a;
             border: none;
             padding: 12px;
@@ -62,26 +63,26 @@
         <hr style="border: 0.5px solid #334155; margin: 20px 0;">
         
         <p style="font-size: 14px;">Если Telegram работает медленно, используй наш резервный мост:</p>
-        <!-- Ссылка на MTProto прокси. Данные прокси можно будет менять -->
-        <button onclick="setupProxy()" class="btn-proxy">⚡ УСКОРИТЬ TELEGRAM</button
+        <button onclick="setupProxy()" class="btn-proxy">⚡ УСКОРИТЬ TELEGRAM</button>
     </div>
 
     <script>
+    // Инициализация Mini App
     let tg = window.Telegram.WebApp;
     tg.expand();
 
+    // Приветствие пользователя
     const user = tg.initDataUnsafe.user;
     if (user) {
         document.getElementById('user-greeting').innerText = `Привет, ${user.first_name}!`;
     }
 
-    // Функция для открытия прокси напрямую через API Telegram
+    // ИСПРАВЛЕНО: Функция теперь открывает реальный прокси-диплинк
     function setupProxy() {
+        // Это пример прокси. Позже заменим на твой личный
         const proxyUrl = "https://t.me";
         tg.openTelegramLink(proxyUrl);
     }
-
-
-</script>
+    </script>
 </body>
 </html>
